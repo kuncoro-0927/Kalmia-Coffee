@@ -15,14 +15,19 @@ body {
 .font-body {
   font-family: "Sora", sans-serif;
 }
+/* BENAR — cloud-bg cuma urus background/warna, TIDAK ngatur posisi */
 .cloud-bg {
+  background: linear-gradient(180deg, #E4EEF8 0%, #CFE1F0 55%, #BFD6E9 100%);
+}
+
+/* elemen dekoratif (blob, grain, line, sparkle) dibungkus wrapper terpisah ini */
+.hero-decor-layer {
   position: absolute;
   inset: 0;
   z-index: -1;
   overflow: hidden;
-  background: linear-gradient(180deg, #e4eef8 0%, #cfe1f0 55%, #bfd6e9 100%);
+  pointer-events: none;
 }
-
 /* setiap blob ini satu "gumpalan awan" — blur besar bikin tepinya soft kayak awan asli */
 .cloud-blob {
   position: absolute;
