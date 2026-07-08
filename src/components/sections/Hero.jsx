@@ -5,7 +5,7 @@ import { FaInstagram, FaFacebook, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 const Hero = () => {
   return (
-    <section className="px-24 ">
+    <section className="px-24 pb-12">
       <div className="flex items-start justify-between">
         <div className="py-12">
           <h1 className="text-8xl font-medium text-[#1746A2]">
@@ -16,10 +16,9 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col gap-24 border-l-2 border-gray-200 p-12">
-          <ul className="flex items-center gap-5 font-medium text-[#1746A2]">
-            <li>About us</li>
-            <li>How it Works</li>
-          </ul>
+          <span className="font-medium text-[#1746A2]">
+          Crafted for Every Coffee Moment
+          </span>
           <SocialCard />
         </div>
       </div>

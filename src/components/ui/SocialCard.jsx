@@ -16,10 +16,13 @@ const SocialCard = () => {
         </div>
       </div>
       <div className="flex flex-col items-start gap-2">
-        <span className="text-xl font-medium text-[#1746A2]">1.400+ Satisfied Customers</span>
-        <span className="text-left text-black">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-          labore cumque, eveniet temporibus tempore!
+        <span className="text-xl font-medium text-[#1746A2]">
+          1.400+ Satisfied Customers
+        </span>
+        <span className="text-left text-black font-medium">
+          From morning coffee runs to afternoon catch-ups, our handcrafted
+          drinks have become a favorite choice for coffee lovers seeking quality
+          and comfort.
         </span>
       </div>
     </div>
