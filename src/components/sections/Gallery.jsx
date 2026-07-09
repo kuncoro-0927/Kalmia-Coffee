@@ -31,7 +31,7 @@ const Gallery = () => {
   }, []);
 
   return (
-    <section className="px-6 sm:px-12 lg:px-24 py-12">
+    <section className="p-24">
       <h2 className="text-6xl font-semibold text-[#1746A2]">
         Explore Our Product
       </h2>

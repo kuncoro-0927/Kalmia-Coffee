@@ -2,7 +2,7 @@ import MenuCard from "../ui/MenuCard";
 import { Menu } from "../../data/Menu";
 const Product = () => {
   return (
-    <section className="px-24 py-12">
+    <section className="p-24">
       <div className="flex items-center justify-between">
         <h2 className="text-6xl font-semibold text-[#1746A2]">
           Explore Our Product

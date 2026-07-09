@@ -3,7 +3,7 @@ import { RiTargetFill, RiShieldCheckLine } from "react-icons/ri";
 import { AiOutlineCoffee } from "react-icons/ai";
 const About = () => {
   return (
-    <section className="px-24 py-12">
+    <section className="p-24">
       <div className="flex items-stretch justify-between gap-12">
         <div className="w-[50%] flex flex-col gap-2">
           <span className="text-[#1746A2]">Lorem ipsum dolor sit amet.</span>
@@ -17,7 +17,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="w-[50%] border-2 p-2 rounded-4xl border-gray-300">
+        <div className="w-[50%] border p-2 rounded-4xl border-gray-300">
           <img className="w-full h-full rounded-4xl" src={about} alt="" />
         </div>
       </div>
