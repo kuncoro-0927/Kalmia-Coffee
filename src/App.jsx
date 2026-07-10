@@ -6,13 +6,13 @@ import About from "./components/sections/About";
 import Gallery from "./components/sections/Gallery";
 import Testimonial from "./components/sections/Testimonial";
 import Contact from "./components/sections/Contact";
-// import ChatWidget from "./components/ui/ChatWidget";
+import ChatWidget from "./components/ui/ChatWidget";
 import { Element } from "react-scroll";
 
 function App() {
   return (
     <>
-      {/* <ChatWidget /> */}
+      <ChatWidget />
       <Navbar />
 
       <main>
