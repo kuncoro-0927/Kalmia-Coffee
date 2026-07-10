@@ -15,7 +15,7 @@ function App() {
       <ChatWidget />
       <Navbar />
 
-      <main>
+      <main className="overflow-hidden">
         <Element name="hero">
           <Hero />
         </Element>
