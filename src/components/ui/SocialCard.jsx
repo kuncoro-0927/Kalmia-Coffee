@@ -16,13 +16,14 @@ const SocialCard = () => {
         </div>
       </div>
       <div className="flex flex-col items-start gap-2">
-        <span className="text-xl font-medium text-[#1746A2]">
-          1.400+ Satisfied Customers
+        <span className="font-bold text-[#1746A2]">
+          1.400+ Pelanggan Telah Berkunjung
         </span>
-        <span className="text-left text-black font-medium">
-          From morning coffee runs to afternoon catch-ups, our handcrafted
-          drinks have become a favorite choice for coffee lovers seeking quality
-          and comfort.
+
+        <span className="text-left font-medium">
+          Dari pagi yang sibuk hingga sore yang santai, Kalmia Coffee hadir
+          sebagai tempat untuk menikmati kopi, berbincang, atau sekadar
+          beristirahat sejenak.
         </span>
       </div>
     </div>

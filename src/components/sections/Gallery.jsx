@@ -32,9 +32,13 @@ const Gallery = () => {
 
   return (
     <section className="p-24">
-      <h2 className="text-6xl font-semibold text-[#1746A2]">
-        Explore Our Product
-      </h2>
+      <div>
+        <h2 className="text-6xl font-semibold text-[#1746A2] leading-tight">
+          Melihat Kalmia Coffee <br /> Lebih Dekat
+        </h2>
+        <p className="font-medium">Sekilas tentang ruang, kopi, dan momen yang menjadi bagian dari Kalmia Coffee.</p>
+      </div>
+
       <div
         ref={containerRef}
         className="mt-10 flex flex-col sm:flex-row gap-6 items-start"

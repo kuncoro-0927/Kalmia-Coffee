@@ -1,26 +1,26 @@
 export const Customers = [
   {
     id: 1,
-    name: "Emma Wilson",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400",
+    text: "Tempat terbaik untuk WFH atau sekadar menikmati sore. Kopinya selalu konsisten dan suasana tenangnya bikin kerja jadi jauh lebih produktif.",
+    name: "Darrell Steward",
+    role: "Marketing Coordinator",
+    avatar: "https://i.pravatar.cc/100?img=12",
+    rating: 5,
   },
   {
     id: 2,
-    name: "Michael Chen",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400",
+    text: "Sangat suka dengan konsep ruangannya yang minimalis dan bersih. Pelayanannya cepat, baristanya ramah, dan menu signature-nya wajib dicoba.",
+    name: "Courtney Henry",
+    role: "Event Manager",
+    avatar: "https://i.pravatar.cc/100?img=32",
+    rating: 5,
   },
   {
     id: 3,
-    name: "Sophia Lee",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400",
-  },
-  {
-    id: 4,
-    name: "Daniel Brown",
-    avatar:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400",
+    text: "Setiap sudutnya estetik dan nyaman buat tempat kumpul atau deep talk. Kualitas biji kopinya terasa premium, benar-benar diracik dengan niat.",
+    name: "Jenny Wilson",
+    role: "Operations Lead",
+    avatar: "https://i.pravatar.cc/100?img=47",
+    rating: 5,
   },
 ];

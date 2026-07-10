@@ -1,49 +1,88 @@
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import SocialCard from "../ui/SocialCard";
 import hero from "../../assets/images/hero.webp";
 import americano from "../../assets/images/americano.webp";
 import { FaInstagram, FaFacebook, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+
 const Hero = () => {
+  const containerRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.from(".hero-heading-line", {
+        y: 60,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.9,
+      })
+        .from(".hero-info", { x: 40, opacity: 0, duration: 0.8 }, "-=0.6")
+        .from(".hero-image", { scale: 1.05, opacity: 0, duration: 1 }, "-=0.4")
+        .from(
+          ".hero-badge",
+          { y: -20, opacity: 0, stagger: 0.08, duration: 0.5 },
+          "-=0.6",
+        )
+        .from(".hero-social", { x: -20, opacity: 0, duration: 0.6 }, "-=0.5")
+        .from(
+          ".hero-product-card",
+          { y: 20, opacity: 0, duration: 0.6 },
+          "-=0.4",
+        );
+    },
+    { scope: containerRef },
+  );
+
   return (
-    <section className="px-24 pb-24">
+    <section ref={containerRef} className="px-24 pb-24">
       <div className="flex items-start justify-between">
-        <div className="py-12">
-          <h1 className="text-8xl font-medium text-[#1746A2]">
-            Fresh <br />{" "}
-            <span className="ml-24 text-[#1746A2]/30">Pressed</span>
-            <br /> Coffee
+        <div className="py-12 overflow-hidden">
+          <h1 className="text-8xl font-semibold text-[#1746A2]">
+            <span className="hero-heading-line block">Ada</span>
+            <span className="hero-heading-line ml-24 block text-[#1746A2]/30">
+              Cerita Apa
+            </span>
+            <span className="hero-heading-line block">Hari Ini?</span>
           </h1>
         </div>
 
-        <div className="flex flex-col gap-24 border-l-2 border-gray-200 p-12">
+        <div className="hero-info flex flex-col gap-12 border-l-2 border-gray-200 p-12">
           <span className="font-medium text-[#1746A2]">
-          Crafted for Every Coffee Moment
+            <span className="font-bold">Buka Setiap Hari</span> <br />
+            Senin - Jum'at: 09.00 - 24.00 WIB <br /> Sabtu - Minggu: 09.00 -
+            03.00 WIB
           </span>
           <SocialCard />
         </div>
       </div>
+
       <div className="relative">
-        <img className="rounded-4xl" src={hero} alt="Caramel Macchiato" />
+        <img
+          className="hero-image rounded-4xl"
+          src={hero}
+          alt="Caramel Macchiato"
+        />
 
         <div className="absolute top-6 left-6 flex flex-wrap gap-3 max-w-md">
-          <span className="rounded-full px-4 py-1 border border-[#5F9DF7]/10 bg-[#5F9DF7]/20 backdrop-blur-xs text-white shadow-md">
+          <span className="hero-badge rounded-full px-4 py-1 border border-[#5F9DF7]/10 bg-[#5F9DF7]/20 backdrop-blur-xs text-white shadow-md">
             Caramel Macchiato
           </span>
-
-          <span className="rounded-full px-4 py-1 border border-[#5F9DF7]/10 bg-[#5F9DF7]/20 backdrop-blur-xs text-white shadow-md">
+          <span className="hero-badge rounded-full px-4 py-1 border border-[#5F9DF7]/10 bg-[#5F9DF7]/20 backdrop-blur-xs text-white shadow-md">
             Vanilla Latte
           </span>
-
-          <span className="rounded-full px-4 py-1 border border-[#5F9DF7]/10 bg-[#5F9DF7]/20 backdrop-blur-xs text-white shadow-md">
+          <span className="hero-badge rounded-full px-4 py-1 border border-[#5F9DF7]/10 bg-[#5F9DF7]/20 backdrop-blur-xs text-white shadow-md">
             Matcha Latte
           </span>
-
-          <span className="rounded-full px-4 py-1 border border-[#5F9DF7]/10 bg-[#5F9DF7]/20 backdrop-blur-xs text-white shadow-md">
+          <span className="hero-badge rounded-full px-4 py-1 border border-[#5F9DF7]/10 bg-[#5F9DF7]/20 backdrop-blur-xs text-white shadow-md">
             Americano
           </span>
         </div>
 
-        <div className="absolute bottom-6 left-6">
+        <div className="hero-social absolute bottom-6 left-6">
           <ul className="flex flex-col gap-2 rounded-full p-1 border border-[#5F9DF7]/10 bg-[#5F9DF7]/20 backdrop-blur-xs text-white shadow-md ">
             <li className="rounded-full flex items-center justify-center w-10 h-10 border border-[#5F9DF7]/10 bg-[#5F9DF7]/20 backdrop-blur-xs text-white shadow-md">
               <FaInstagram className="text-xl" />
@@ -60,7 +99,7 @@ const Hero = () => {
           </ul>
         </div>
 
-        <div className="absolute bottom-6 right-6 2xl:max-w-md flex items-stretch gap-4 rounded-2xl p-3 border border-[#5F9DF7]/10 bg-[#5F9DF7]/20 backdrop-blur-xs text-white shadow-md ">
+        <div className="hero-product-card absolute bottom-6 right-6 2xl:max-w-md flex items-stretch gap-4 rounded-2xl p-3 border border-[#5F9DF7]/10 bg-[#5F9DF7]/20 backdrop-blur-xs text-white shadow-md ">
           <img
             className="w-[150px] h-[150px]  object-cover rounded-2xl"
             src={americano}
@@ -68,13 +107,12 @@ const Hero = () => {
           />
           <div className="flex flex-col">
             <h4 className="font-medium text-lg">Americano</h4>
-
             <p className="text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Espresso berpadu air panas atau es dengan rasa yang ringan dan
+              bersih.
             </p>
-
             <div className="mt-auto flex items-center justify-between">
-              <span className="font-medium text-xl">IDR 14.000</span>
+              <span className="font-medium text-xl">IDR 25.000</span>
               <button className="bg-white px-4 py-2 rounded-full text-sm text-[#1746A2]">
                 Beli Sekarang
               </button>

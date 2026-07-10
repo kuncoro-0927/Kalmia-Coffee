@@ -1,3 +1,7 @@
+import { useRef, useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import img from "../../assets/images/galeri1.jpg";
 import caramel from "../../assets/images/contact.png";
 import icon1 from "../../assets/icons/icon1.png";
@@ -8,30 +12,117 @@ import icon5 from "../../assets/icons/icon5.png";
 import icon6 from "../../assets/icons/icon6.png";
 import icon7 from "../../assets/icons/icon7.png";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Contact = () => {
+  const sectionRef = useRef(null);
+  const leftRef = useRef(null);
+  const cupRef = useRef(null);
+  const textRef = useRef(null);
+  const rightRef = useRef(null);
+  const iconsRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      tl.from(leftRef.current, {
+        x: -80,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power3.out",
+      })
+        .from(
+          cupRef.current,
+          {
+            scale: 0.8,
+            opacity: 0,
+            duration: 0.8,
+            ease: "back.out(1.6)",
+          },
+          "-=0.4",
+        )
+        .from(
+          textRef.current.children,
+          {
+            y: 30,
+            opacity: 0,
+            stagger: 0.2,
+            duration: 0.6,
+            ease: "power3.out",
+          },
+          "-=0.3",
+        )
+        .from(
+          rightRef.current,
+          {
+            x: 80,
+            opacity: 0,
+            duration: 0.9,
+            ease: "power3.out",
+          },
+          "-=0.7",
+        )
+        .from(
+          iconsRef.current.children,
+          {
+            scale: 0.6,
+            opacity: 0,
+            rotate: -20,
+            stagger: 0.08,
+            duration: 0.45,
+            ease: "back.out(1.7)",
+          },
+          "-=0.5",
+        );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="flex items-stretch h-screen my-24">
-      <div className="relative w-1/2 h-full">
+    <section ref={sectionRef} className="flex items-stretch h-screen my-24 overflow-hidden">
+      {/* LEFT */}
+      <div ref={leftRef} className="relative w-1/2 h-full">
         <img className="w-full h-full object-cover" src={img} alt="" />
+
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
         <img
-          className="absolute top-1/3 left-1/2 w-[350px] -translate-x-1/2 -translate-y-1/2 object-contain"
+          ref={cupRef}
+          className="absolute top-2 left-1/2 w-[350px] -translate-x-1/2 object-contain"
           src={caramel}
           alt=""
         />
 
-        <div className="absolute top-2/3 left-1/2 -translate-x-1/2 translate-y-1/5 text-white text-center flex flex-col items-center gap-4">
+        <div
+          ref={textRef}
+          className="absolute top-2/3 left-1/2 -translate-x-1/2 translate-y-1/5 text-white text-center flex flex-col items-center gap-4"
+        >
           <span>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi eos
-            commodi ab velit cum.
+            Sambil menikmati secangkir kopi, siapa tahu ceritamu hari ini jadi
+            lebih hangat. Yuk, singgah sebentar.
           </span>
-          <button className="w-fit bg-white px-4 py-2 rounded-4xl text-[#363636] font-medium">Get Started</button>
+
+          <button className="w-fit bg-[#1746A2] px-4 py-2 rounded-4xl text-white font-medium">
+            Kunjungi Kami
+          </button>
         </div>
       </div>
-      <div className="relative w-1/2 overflow-hidden bg-[#F4B342] p-12">
-        {/* background decorative icons */}
-        <div className="pointer-events-none absolute inset-0 ">
+
+      {/* RIGHT */}
+      <div
+        ref={rightRef}
+        className="relative w-1/2 overflow-hidden bg-[#F4B342] p-12"
+      >
+        {/* Decorative Icons */}
+        <div ref={iconsRef} className="pointer-events-none absolute inset-0">
           <img
             src={icon1}
             className="absolute bottom-32 opacity-40 left-8 w-20 -rotate-6"
@@ -69,11 +160,11 @@ const Contact = () => {
           />
         </div>
 
-        {/* konten asli */}
+        {/* Heading */}
         <h2 className="relative z-10 text-6xl font-semibold leading-tight text-[#1746A2]/30">
-          Lorem ipsum dolor, sit{" "}
-          <span className="text-[#1746A2]">amet consectetur</span> adipisicing
-          elit. Voluptate tenetur expedita atque!
+          Apapun cerita hari ini, ada{" "}
+          <span className="text-[#1746A2]">tempat hangat</span> menantimu di
+          sini.
         </h2>
       </div>
     </section>
