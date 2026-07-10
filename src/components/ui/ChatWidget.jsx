@@ -3,7 +3,7 @@ import { VscSend } from "react-icons/vsc";
 import gsap from "gsap";
 import logoblue from "../../assets/logo-white.svg";
 import { useLayoutEffect } from "react";
-
+import { GoHubot } from "react-icons/go";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function ChatWidget() {
@@ -125,7 +125,7 @@ export default function ChatWidget() {
 
             <button
               onClick={() => setOpen(false)}
-              className="text-white/80 hover:text-white"
+              className="text-white/80 hover:text-white cursor-pointer"
             >
               ✕
             </button>
@@ -183,18 +183,19 @@ export default function ChatWidget() {
             )}
           </div>
 
-          <div className="flex items-center gap-2 rounded-xl p-3">
+          <div className="relative p-3">
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Tulis pesan..."
-              className="flex-1 relative rounded-4xl text-black border-y-2 px-5 py-2 text-sm outline-none border-white/40 shadow-md"
+              className="w-full rounded-4xl border-y-2 border-white/40 px-5 pr-14 py-2 text-sm text-black outline-none shadow-md"
             />
+
             <button
               onClick={sendMessage}
               disabled={loading}
-              className="absolute right-4 cursor-pointer rounded-full mr-4 text-xl text-[#363636] disabled:opacity-50"
+              className="absolute right-7 top-1/2 -translate-y-1/2 cursor-pointer rounded-full text-xl text-[#363636] disabled:opacity-50 hover:text-[#1746A2]"
             >
               <VscSend />
             </button>
@@ -208,9 +209,9 @@ export default function ChatWidget() {
       {/* Toggle button */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex ml-auto h-14 w-14 items-center justify-center rounded-full bg-[#1746A2] text-white shadow-lg hover:scale-105 transition"
+        className="flex ml-auto h-14 w-14 items-center justify-center rounded-full bg-[#1746A2] text-white shadow-lg hover:scale-105 transition cursor-pointer"
       >
-        {open ? "✕" : "💬"}
+        {open ? "✕" : <GoHubot className="text-xl" />}
       </button>
     </div>
   );

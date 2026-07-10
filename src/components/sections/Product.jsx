@@ -68,18 +68,18 @@ const Product = () => {
   );
 
   return (
-    <section ref={containerRef} className="px-24 py-20">
-      <div className="flex items-center justify-between">
-        <h2 className="product-heading text-6xl font-semibold text-[#1746A2]">
+    <section ref={containerRef} className="px-6 py-12 xl:px-24 xl:py-24">
+      <div className="flex items-start justify-between">
+        <h2 className="product-heading text-4xl xl:text-6xl font-semibold text-[#1746A2]">
           Jelajahi Menu Kami
         </h2>
-        <span className="product-heading text-6xl font-semibold text-[#1746A2]">
+        <span className="product-heading text-4xl xl:text-6xl font-semibold text-[#1746A2]">
           /2026
         </span>
       </div>
 
-      <div className="mt-12">
-        <ul className="flex items-center gap-2">
+      <div className="mt-6 xl:mt-12">
+        <ul className="flex flex-wrap items-center gap-2">
           {categories.map((category) => (
             <li
               key={category}
@@ -96,7 +96,7 @@ const Product = () => {
         </ul>
       </div>
 
-      <div className="mt-10 grid grid-cols-4 gap-6">
+      <div className="mt-10 grid grid-cols-2 xl:grid-cols-4 gap-6">
         {filteredMenu.map((item, index) => (
           <div key={item.id} className="product-card-item">
             <MenuCard item={item} index={index} />

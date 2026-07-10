@@ -2,7 +2,7 @@ const MenuCard = ({ item }) => {
   return (
     <div>
       <img
-        className="w-full h-[400px] object-cover rounded-2xl"
+        className="w-full h-[200px] xl:h-[400px] object-cover rounded-2xl"
         src={item.image}
         alt=""
       />

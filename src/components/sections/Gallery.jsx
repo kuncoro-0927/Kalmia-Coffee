@@ -31,9 +31,9 @@ const Gallery = () => {
   }, []);
 
   return (
-    <section className="p-24">
+    <section className="px-6 py-12 xl:p-24">
       <div>
-        <h2 className="text-6xl font-semibold text-[#1746A2] leading-tight">
+        <h2 className="text-4xl xl:text-6xl font-semibold text-[#1746A2] leading-tight">
           Melihat Kalmia Coffee <br /> Lebih Dekat
         </h2>
         <p className="font-medium">Sekilas tentang ruang, kopi, dan momen yang menjadi bagian dari Kalmia Coffee.</p>

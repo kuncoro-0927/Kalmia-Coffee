@@ -53,8 +53,8 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer ref={footerRef} className="px-24 py-12">
-      <div className="flex items-end justify-between border-b pb-12">
+    <footer ref={footerRef} className="px-6 xl:px-24 py-12">
+      <div className="flex flex-col gap-y-12 xl:gap-y-0 xl:flex-row items-start xl:items-end justify-between border-b pb-12">
         {/* Left */}
         <div
           ref={leftRef}
@@ -102,7 +102,7 @@ const Footer = () => {
       {/* Bottom */}
       <div
         ref={bottomRef}
-        className="flex items-center justify-between pt-6"
+        className="flex flex-col xl:flex-row items-start xl:items-center justify-between pt-6"
       >
         <span>Pacitan, Jawa Timur</span>
         <span>© 2026 Kalmia Coffee. All Rights Reserved.</span>

@@ -89,7 +89,7 @@ const Testimonial = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="p-24">
+    <section ref={sectionRef} className="px-6 py-12 xl:p-24">
       <div className="w-full mx-auto grid grid-cols-1 sm:grid-cols-[280px_1fr] gap-8 sm:gap-16">
         {/* Left Side */}
         <div
@@ -132,9 +132,10 @@ const Testimonial = () => {
 
         {/* Right Side */}
         <div>
+          <ImQuotesLeft className="w-16 h-16 xl:hidden mb-3 text-[#1746A2]" />
           <h2
             ref={titleRef}
-            className="text-4xl sm:text-6xl font-semibold text-[#1746A2] mb-12"
+            className="text-4xl sm:text-6xl font-semibold text-[#1746A2] mb-6 xl:mb-12"
           >
             Kesan dari Sahabat Kalmia
           </h2>
@@ -158,10 +159,10 @@ const Testimonial = () => {
 
           <div
             ref={profileRef}
-            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8"
+            className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-8"
           >
             {/* Mobile Navigation */}
-            <div className="flex sm:hidden items-center gap-4">
+            <div className="flex  sm:hidden items-center gap-4">
               <button
                 onClick={goPrev}
                 aria-label="Sebelumnya"
