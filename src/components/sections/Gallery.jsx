@@ -1,68 +1,44 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
 import { galleryColumns } from "../../data/Gallery";
-
-gsap.registerPlugin(ScrollTrigger);
-
+import { useGalleryAnimation } from "../../hooks/animations/useGallery";
 const Gallery = () => {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const items = containerRef.current.querySelectorAll(".gallery-item");
-
-    gsap.fromTo(
-      items,
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: 0.08,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-        },
-      },
-    );
-
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
-  }, []);
+  const galleryRef = useRef(null);
+  useGalleryAnimation(galleryRef);
 
   return (
-    <section className="px-6 py-12 xl:p-24">
-      <div>
-        <h2 className="text-4xl xl:text-6xl font-semibold text-[#1746A2] leading-tight">
+    <section ref={galleryRef} className="px-6 py-12 sm:px-12 xl:p-24">
+      <div className="gallery-heading">
+        <h2 className="text-4xl lg:text-5xl xl:text-6xl font-semibold text-[#1746A2] leading-tight">
           Melihat Kalmia Coffee <br /> Lebih Dekat
         </h2>
-        <p className="font-medium">Sekilas tentang ruang, kopi, dan momen yang menjadi bagian dari Kalmia Coffee.</p>
+
+        <p className="font-medium">
+          Sekilas tentang ruang, kopi, dan momen yang menjadi bagian dari Kalmia
+          Coffee.
+        </p>
       </div>
 
-      <div
-        ref={containerRef}
-        className="mt-10 flex flex-col sm:flex-row gap-6 items-start"
-      >
+      <div className="mt-10 flex flex-col items-start gap-6 lg:flex-row">
         {galleryColumns.map((column, colIndex) => (
-          <div key={colIndex} className="flex flex-col gap-6 flex-1 w-full">
+          <div key={colIndex} className="flex w-full flex-1 flex-col gap-6">
             {column.map((item) => (
               <div
                 key={item.id}
-                className="gallery-item flex flex-col group cursor-pointer"
+                className="gallery-item group flex cursor-pointer flex-col"
               >
                 <div
-                  className="overflow-hidden rounded-2xl bg-gray-100 dark:bg-neutral-800"
+                  className="overflow-hidden rounded-2xl bg-gray-100"
                   style={{ height: item.height }}
                 >
                   <img
                     src={item.src}
                     alt={item.alt}
-                    className="w-full h-full rounded-2xl object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     loading="lazy"
+                    className="h-full w-full rounded-2xl object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                 </div>
 
-                <div className="flex justify-between items-center mt-3 text-sm text-[#1746A2] font-semibold tracking-wide">
+                <div className="mt-3 flex items-center justify-between text-sm font-semibold tracking-wide text-[#1746A2]">
                   <span>Gallery</span>
                   <span className="font-mono">
                     /{String(item.id).padStart(2, "0")}

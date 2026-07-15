@@ -6,6 +6,16 @@ import mocha from "../assets/images/mocha-hot.webp";
 import affogato from "../assets/images/affogato.webp";
 import flatwhite from "../assets/images/flat-white.webp";
 import piccolo from "../assets/images/piccolo-latte.webp";
+
+//signature
+import kalmia from "../assets/images/signature/kalmia.webp";
+import palm from "../assets/images/signature/palm.webp";
+import caramel from "../assets/images/signature/caramel.webp";
+import vanila from "../assets/images/signature/vanila.webp";
+import hazelnut from "../assets/images/signature/hazelnut.webp";
+import butter from "../assets/images/signature/butter.webp";
+import coconut from "../assets/images/signature/coconut.webp";
+import honey from "../assets/images/signature/honey.webp";
 export const Menu = [
   // Espresso Based
   {
@@ -81,7 +91,7 @@ export const Menu = [
     name: "Affogato",
     category: "Espresso Based",
     type: "iced",
-    description: "Espresso hangat disajikan bersama es krim vanilla.",
+    description: "Espresso disajikan bersama es krim vanilla.",
     price: "35.000",
     image: affogato,
   },
@@ -94,7 +104,7 @@ export const Menu = [
     type: "both",
     description: "Signature latte dengan cita rasa lembut khas Kalmia Coffee.",
     price: "35.000",
-    image: img,
+    image: kalmia,
   },
   {
     id: 10,
@@ -103,7 +113,7 @@ export const Menu = [
     type: "iced",
     description: "Latte berpadu gula aren dengan rasa manis alami.",
     price: "34.000",
-    image: img,
+    image: palm,
   },
   {
     id: 11,
@@ -112,7 +122,7 @@ export const Menu = [
     type: "both",
     description: "Espresso, susu, dan caramel dengan aroma yang khas.",
     price: "36.000",
-    image: img,
+    image: caramel,
   },
   {
     id: 12,
@@ -121,7 +131,7 @@ export const Menu = [
     type: "both",
     description: "Latte dengan sentuhan vanilla yang lembut dan harum.",
     price: "34.000",
-    image: img,
+    image: vanila,
   },
   {
     id: 13,
@@ -130,7 +140,7 @@ export const Menu = [
     type: "both",
     description: "Latte dengan aroma hazelnut yang kaya dan creamy.",
     price: "35.000",
-    image: img,
+    image: hazelnut,
   },
   {
     id: 14,
@@ -139,7 +149,7 @@ export const Menu = [
     type: "both",
     description: "Perpaduan espresso dan butterscotch yang lembut.",
     price: "35.000",
-    image: img,
+    image: butter,
   },
   {
     id: 15,
@@ -148,7 +158,7 @@ export const Menu = [
     type: "iced",
     description: "Espresso dengan susu dan aroma kelapa yang ringan.",
     price: "36.000",
-    image: img,
+    image: coconut,
   },
   {
     id: 16,
@@ -157,7 +167,7 @@ export const Menu = [
     type: "both",
     description: "Latte dengan sentuhan madu untuk rasa manis alami.",
     price: "35.000",
-    image: img,
+    image: honey,
   },
 
   // Non Coffee

@@ -1,22 +1,13 @@
-import { useState, useRef, useLayoutEffect } from "react";
+import { useState, useRef } from "react";
 import { TbStarFilled } from "react-icons/tb";
 import { ImQuotesLeft } from "react-icons/im";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Customers } from "../../data/Customers";
-
-gsap.registerPlugin(ScrollTrigger);
-
+import { useTestimonialAnimation } from "../../hooks/animations/useTestimonial";
 const Testimonial = () => {
   const [active, setActive] = useState(0);
-
-  const sectionRef = useRef(null);
-  const quoteRef = useRef(null);
-  const titleRef = useRef(null);
-  const lineRef = useRef(null);
-  const contentRef = useRef(null);
-  const profileRef = useRef(null);
+  const testimonialRef = useRef(null);
+  useTestimonialAnimation(testimonialRef);
 
   const goPrev = () =>
     setActive((prev) => (prev === 0 ? Customers.length - 1 : prev - 1));
@@ -26,83 +17,18 @@ const Testimonial = () => {
 
   const current = Customers[active];
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      tl.from(quoteRef.current, {
-        x: -60,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power3.out",
-      })
-        .from(
-          titleRef.current,
-          {
-            y: 40,
-            opacity: 0,
-            duration: 0.6,
-            ease: "power3.out",
-          },
-          "-=0.4",
-        )
-        .from(
-          lineRef.current,
-          {
-            scaleX: 0,
-            transformOrigin: "left center",
-            duration: 0.4,
-            ease: "power2.out",
-          },
-          "-=0.3",
-        )
-        .from(
-          contentRef.current.children,
-          {
-            y: 40,
-            opacity: 0,
-            stagger: 0.2,
-            duration: 0.5,
-            ease: "power3.out",
-          },
-          "-=0.2",
-        )
-        .from(
-          profileRef.current,
-          {
-            y: 30,
-            opacity: 0,
-            duration: 0.4,
-            ease: "power3.out",
-          },
-          "-=0.2",
-        );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="px-6 py-12 xl:p-24">
-      <div className="w-full mx-auto grid grid-cols-1 sm:grid-cols-[280px_1fr] gap-8 sm:gap-16">
+    <section ref={testimonialRef} className="px-6 py-12 sm:px-12 xl:p-24">
+      <div className="w-full mx-auto grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 sm:gap-16">
         {/* Left Side */}
-        <div
-          ref={quoteRef}
-          className="hidden sm:flex flex-col justify-between items-start h-full"
-        >
+        <div className="testimonial-quote hidden lg:flex flex-col justify-between items-start h-full">
           <ImQuotesLeft className="w-24 h-24 text-[#1746A2]" />
 
           <div className="flex items-center gap-4">
             <button
               onClick={goPrev}
               aria-label="Sebelumnya"
-              className="w-11 h-11 rounded-full bg-[#1746A2] text-white flex items-center justify-center hover:bg-[#2c4030] transition-colors"
+              className="w-11 h-11 rounded-full bg-[#1746A2] text-white flex items-center justify-center cursor-pointer hover:bg-[#143b8a] transition-colors"
             >
               <IoIosArrowBack className="w-5 h-5" />
             </button>
@@ -123,7 +49,7 @@ const Testimonial = () => {
             <button
               onClick={goNext}
               aria-label="Selanjutnya"
-              className="w-11 h-11 rounded-full bg-[#1746A2]/10 text-[#1746A2] flex items-center justify-center hover:bg-gray-200 transition-colors"
+              className="w-11 h-11 rounded-full bg-[#1746A2]/10 text-[#1746A2] cursor-pointer flex items-center justify-center hover:bg-gray-200 transition-colors"
             >
               <IoIosArrowForward className="w-5 h-5" />
             </button>
@@ -132,17 +58,14 @@ const Testimonial = () => {
 
         {/* Right Side */}
         <div>
-          <ImQuotesLeft className="w-16 h-16 xl:hidden mb-3 text-[#1746A2]" />
-          <h2
-            ref={titleRef}
-            className="text-4xl sm:text-6xl font-semibold text-[#1746A2] mb-6 xl:mb-12"
-          >
+          <ImQuotesLeft className="w-16 h-16 lg:hidden mb-3 text-[#1746A2]" />
+          <h2 className="testimonial-title text-4xl lg:text-5xl xl:text-6xl font-semibold text-[#1746A2] mb-6 xl:mb-12">
             Kesan dari Sahabat Kalmia
           </h2>
 
-          <hr ref={lineRef} className="border-t border-gray-300 mb-12" />
+          <hr className="testimonial-line border-t border-gray-300 mb-12" />
 
-          <div ref={contentRef}>
+          <div className="testimonial-content">
             <div className="flex gap-1 mb-4">
               {Array.from({ length: current.rating }).map((_, i) => (
                 <TbStarFilled
@@ -152,17 +75,14 @@ const Testimonial = () => {
               ))}
             </div>
 
-            <p className="text-2xl sm:text-5xl leading-snug text-[#1746A2] font-medium mb-10">
+            <p className="text-2xl lg:text-3xl xl:text-5xl leading-snug text-[#1746A2] font-medium mb-10">
               {current.text}
             </p>
           </div>
 
-          <div
-            ref={profileRef}
-            className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-8"
-          >
+          <div className="testimonial-profile flex flex-col-reverse lg:flex-row lg:items-center lg:justify-between gap-8">
             {/* Mobile Navigation */}
-            <div className="flex  sm:hidden items-center gap-4">
+            <div className="flex  lg:hidden items-center gap-4">
               <button
                 onClick={goPrev}
                 aria-label="Sebelumnya"

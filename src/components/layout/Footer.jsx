@@ -1,68 +1,20 @@
-import { useRef, useLayoutEffect } from "react";
+import { useRef } from "react";
+import logo from "../../assets/logo-blue.svg";
 import { IoIosCall, IoIosMail } from "react-icons/io";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
+import { useFooterAnimation } from "../../hooks/animations/useFooter";
 const Footer = () => {
   const footerRef = useRef(null);
-  const leftRef = useRef(null);
-  const rightRef = useRef(null);
-  const bottomRef = useRef(null);
-
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      tl.from(leftRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      })
-        .from(
-          rightRef.current,
-          {
-            x: 60,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power3.out",
-          },
-          "-=0.5"
-        )
-        .from(
-          bottomRef.current,
-          {
-            y: 25,
-            opacity: 0,
-            duration: 0.6,
-            ease: "power3.out",
-          },
-          "-=0.2"
-        );
-    }, footerRef);
-
-    return () => ctx.revert();
-  }, []);
+  useFooterAnimation(footerRef);
 
   return (
-    <footer ref={footerRef} className="px-6 xl:px-24 py-12">
-      <div className="flex flex-col gap-y-12 xl:gap-y-0 xl:flex-row items-start xl:items-end justify-between border-b pb-12">
+    <footer ref={footerRef} className="px-6 sm:px-12 xl:px-24 py-12">
+      <div className="flex flex-col gap-y-12 lg:gap-y-0 lg:flex-row items-start lg:items-end justify-between border-b pb-12">
         {/* Left */}
-        <div
-          ref={leftRef}
-          className="flex flex-col gap-2"
-        >
-          <h3 className="text-2xl font-semibold">
-            Kalmia Coffee
-          </h3>
+        <div className="footer-left flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <img src={logo} className="w-6" alt="" />
+            <h3 className="text-xl font-bold">Kalmia Coffee</h3>
+          </div>
 
           <span className="text-4xl font-semibold">
             Sampai jumpa di cerita berikutnya.
@@ -87,7 +39,7 @@ const Footer = () => {
         </div>
 
         {/* Right */}
-        <div ref={rightRef}>
+        <div className="footer-right">
           <h4>Follow Our Media Social</h4>
 
           <ul className="mt-6 uppercase flex items-center gap-6 font-semibold">
@@ -100,11 +52,8 @@ const Footer = () => {
       </div>
 
       {/* Bottom */}
-      <div
-        ref={bottomRef}
-        className="flex flex-col xl:flex-row items-start xl:items-center justify-between pt-6"
-      >
-        <span>Pacitan, Jawa Timur</span>
+      <div className="footer-bottom flex flex-col lg:flex-row items-start lg:items-center justify-between pt-6">
+        <span>Malang, Jawa Timur</span>
         <span>© 2026 Kalmia Coffee. All Rights Reserved.</span>
       </div>
     </footer>

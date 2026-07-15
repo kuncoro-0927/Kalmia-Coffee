@@ -110,23 +110,26 @@ const Navbar = () => {
       <nav
         className={`sticky top-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "bg-white/90 backdrop-blur-md shadow-md"
-            : "bg-white border-b-2 border-gray-200"
+            ? "bg-[#f7f6f2]/90 border-b-2 border-transparent backdrop-blur-md shadow-md"
+            : "bg-[#f7f6f2] border-b-2 border-gray-200"
         }`}
       >
-        <div className="flex items-center justify-between px-6 lg:px-24 py-5">
+        <div className="relative  flex items-center justify-between px-6 sm:px-12 xl:px-24 py-5">
           {/* Desktop Menu */}
           <ul className="hidden lg:flex items-center gap-5 font-medium text-[#1746A2]">
             {menus.map((item) => (
-              <li key={item.to}>
+              <li
+                key={item.to}
+                className="hover:underline underline-offset-8 duration-300 transition-all"
+              >
                 <ScrollLink
                   to={item.to}
                   smooth
                   duration={600}
-                  offset={-70}
+                  offset={-20}
                   spy
-                  activeClass="font-bold"
-                  className="cursor-pointer"
+                  className="cursor-pointer transition-all"
+                  activeClass="underline underline-offset-8"
                 >
                   {item.title}
                 </ScrollLink>
@@ -135,22 +138,31 @@ const Navbar = () => {
           </ul>
 
           {/* Logo */}
-          <div className="flex items-center gap-2 text-xl font-bold text-[#1746A2]">
+          <ScrollLink
+            to="hero"
+            href="hero"
+            smooth
+            duration={600}
+            offset={-90}
+            spy
+            className="absolute left-6 lg:left-1/2 lg:-translate-x-1/2 flex items-center gap-2 text-xl font-bold text-[#1746A2]"
+          >
             <img src={logo} className="w-6" alt="" />
             <span>Kalmia Coffee</span>
-          </div>
+          </ScrollLink>
 
           {/* Desktop Button */}
           <div className="hidden lg:block">
-            <button className="rounded-full bg-[#1746A2] px-4 py-2 text-white">
-              Pesan Sekarang
+            <button className="rounded-full bg-[#1746A2] px-4 py-2 text-white cursor-pointer hover:-translate-y-0.5 duration-300 hover:bg-[#143b8a]">
+              Hubungi Kami
             </button>
           </div>
 
           {/* Mobile Hamburger */}
           <button
+            aria-label="Button hamburger menu"
             onClick={() => setOpen(true)}
-            className="lg:hidden text-[#1746A2]"
+            className="ml-auto lg:hidden text-[#1746A2]"
           >
             <HiOutlineMenuAlt3 className="text-3xl" />
           </button>
@@ -160,7 +172,7 @@ const Navbar = () => {
       {/* Overlay */}
       <div
         ref={overlayRef}
-         style={{ display: "none" }}
+        style={{ display: "none" }}
         onClick={() => setOpen(false)}
         className="fixed inset-0 z-40 hidden bg-black/40 backdrop-blur-sm lg:hidden"
       />
@@ -169,7 +181,7 @@ const Navbar = () => {
       <aside
         ref={menuRef}
         style={{ display: "none" }}
-        className="fixed left-4 top-4 bottom-4 z-50 hidden w-[82%] h-[500px] max-w-xs rounded-[32px] bg-[#1746A2] text-white shadow-2xl lg:hidden"
+        className="fixed left-4 sm:left-12 top-4 bottom-4 z-50 hidden w-[82%] h-[500px] max-w-xs rounded-[32px] bg-[#1746A2] text-white shadow-2xl lg:hidden"
       >
         <div className="flex h-full flex-col p-6">
           {/* Header */}
@@ -181,6 +193,7 @@ const Navbar = () => {
 
             <button
               onClick={closeMenu}
+              aria-label="Button close menu"
               className="flex items-center gap-1 rounded-full bg-white/20 px-4 py-2 text-sm"
             >
               <HiX />
@@ -194,9 +207,10 @@ const Navbar = () => {
               <li key={item.to} className="menu-item">
                 <ScrollLink
                   to={item.to}
+                  href={item.to}
                   smooth
                   duration={600}
-                  offset={-70}
+                  offset={-20}
                   onClick={() => setOpen(false)}
                   className="cursor-pointer text-xl font-semibold"
                 >
@@ -207,8 +221,11 @@ const Navbar = () => {
           </ul>
 
           {/* Button */}
-          <button className="menu-item mt-10 rounded-full bg-white py-3 font-semibold text-[#1746A2]">
-            Pesan Sekarang
+          <button
+            aria-label="Pesan Sekarang"
+            className="menu-item mt-10 rounded-full bg-white py-3 font-semibold text-[#1746A2]"
+          >
+            Hubungi Kami
           </button>
 
           {/* Footer */}

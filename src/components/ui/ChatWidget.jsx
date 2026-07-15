@@ -5,7 +5,7 @@ import logoblue from "../../assets/logo-white.svg";
 import { useLayoutEffect } from "react";
 import { GoHubot } from "react-icons/go";
 const API_URL = import.meta.env.VITE_API_URL;
-
+console.log(import.meta.env.VITE_API_URL);
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const chatRef = useRef(null);
@@ -212,6 +212,7 @@ export default function ChatWidget() {
 
       {/* Toggle button */}
       <button
+        aria-label={open ? "Tutup chat" : "Buka chat Kalmia AI"}
         onClick={() => setOpen(!open)}
         className="flex ml-auto h-14 w-14 items-center justify-center rounded-full bg-[#1746A2] text-white shadow-lg hover:scale-105 transition cursor-pointer"
       >
