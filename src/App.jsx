@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Preloader from "./components/ui/Preloader";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Hero from "./components/sections/Hero";
@@ -10,8 +13,20 @@ import ChatWidget from "./components/ui/ChatWidget";
 import { Element } from "react-scroll";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <>
+      {isLoading && (
+        <Preloader
+          onComplete={() => {
+            setIsLoading(false);
+            // layout final baru kebentuk setelah preloader ilang,
+            // jadi refresh posisi semua ScrollTrigger di halaman
+            requestAnimationFrame(() => ScrollTrigger.refresh());
+          }}
+        />
+      )}
       <ChatWidget />
       <Navbar />
 

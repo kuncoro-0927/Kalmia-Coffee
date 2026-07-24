@@ -11,7 +11,7 @@ const Contact = () => {
   return (
     <section
       ref={contactRef}
-      className="flex flex-col-reverse lg:flex-row items-stretch 2xl:h-screen my-12 2xl:my-24 overflow-hidden"
+      className="flex flex-col-reverse lg:flex-row items-stretch 2xl:h-screen my-12 2xl:mt-24 overflow-hidden"
     >
       {/* LEFT */}
       <div className="contact-left relative w-full xl:w-1/2 h-[500px]  lg:h-[700px]">

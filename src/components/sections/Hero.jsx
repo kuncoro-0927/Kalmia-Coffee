@@ -48,7 +48,7 @@ const Hero = () => {
         <img
           src={hero}
           alt="Caramel Macchiato"
-          className="hero-image h-[750px] rounded-4xl object-cover"
+          className="hero-image h-[750px] w-full rounded-4xl object-cover"
         />
         <div className="absolute top-6 left-6 flex max-w-md flex-wrap gap-3">
           {[
